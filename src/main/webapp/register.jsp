@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>New User Registration</h1>
-<form method="post" >
+<form method="post" action="register">
     Username:<input type="text" name="username" ><br>
     password:<input type="password" name="password" ><br>
     Email:<input type="text" name="Email" ><br>
