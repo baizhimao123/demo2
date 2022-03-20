@@ -8,6 +8,7 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="register.jsp">New User Registration</a>
+<a href="register.jsp">New User Registration</a><br>
+<a href="query.jsp">QueryInformation</a>
 </body>
 </html>
