@@ -51,12 +51,12 @@ public class JDBCDemoServlet extends HttpServlet {
         }
     }*/
 
-    public static Connection getCon() {
+    /*public static Connection getCon() {
         /*ServletContext context=getServletContext();
         String driver=context.getInitParameter("driver");
         String url=context.getInitParameter("url");
         String username=context.getInitParameter("username");
-        String password=context.getInitParameter("password");*/
+        String password=context.getInitParameter("password");
         String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
         String url="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=userdb";
         String username="sa";
@@ -69,7 +69,7 @@ public class JDBCDemoServlet extends HttpServlet {
             e.printStackTrace();
         }
         return con;
-    }
+    }*/
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

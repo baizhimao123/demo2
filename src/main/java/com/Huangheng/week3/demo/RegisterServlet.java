@@ -8,15 +8,15 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
-
+@WebServlet(urlPatterns = {"/register"},loadOnStartup = 1)
 public class RegisterServlet extends HttpServlet {
-    /*
+
     Connection con=null;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        ServletContext context=getServletContext();
+        /*ServletContext context=getServletContext();
         String driver=context.getInitParameter("driver");
         String url=context.getInitParameter("url");
         String username=context.getInitParameter("username");
@@ -27,12 +27,13 @@ public class RegisterServlet extends HttpServlet {
             System.out.println("Connection -->JDBCDemoServlet-->"+con);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-        }
-    }*/
+        }*/
+        con= (Connection) getServletContext().getAttribute("con");
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request,response);
     }
 
     @Override
@@ -61,34 +62,44 @@ public class RegisterServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }*/
-        Connection con=null;
         try {
-            con= JDBCDemoServlet.getCon();
-            String sql= "insert into usertable(UserName,Password,Email,Gender,Birthdate) values(?,?,?,?,?) ";
-            PreparedStatement preparedStatement= con.prepareStatement(sql);
-            preparedStatement.setString(1,username);
-            preparedStatement.setString(2,password);
-            preparedStatement.setString(3,Email);
-            preparedStatement.setString(4,sex);
-            preparedStatement.setString(5,birthdate);
-            preparedStatement.executeUpdate();
+            Statement statement=con.createStatement();
+            String sql= "insert into usertable(UserName,Password,Email,Gender,Birthdate)"+
+                    " values('"+username+"','"+password+"','"+Email+"','"+sex+"','"+birthdate+"')";
+            System.out.println("sql"+sql);
+            int n= statement.executeUpdate(sql);
+            System.out.println("n>"+n);
 
+            //sql="select * from usertable";
+           // ResultSet resultSet=statement.executeQuery(sql);
+
+           // PrintWriter printWriter=response.getWriter();
+            //printWriter.println("<html><title></title><body><table border=1><br>");
+           // printWriter.println("<td>Username</td><td>Password</td><td>Email</td><td>Gender</td><td>Birthdate</td>");
+
+          /*  while (resultSet.next()){
+                printWriter.println("<tr>");
+                printWriter.println("<td>"+resultSet.getString("UserName")+"</td>");
+                printWriter.println("<td>"+resultSet.getString("Password")+"</td>");
+                printWriter.println("<td>"+resultSet.getString("Email")+"</td>");
+                printWriter.println("<td>"+resultSet.getString("Gender")+"</td>");
+                printWriter.println("<td>"+resultSet.getString("Birthdate")+"</td>");
+                printWriter.println("</tr>");
+            }*/
+           // printWriter.println("</table></body></html>");
+            //request.setAttribute("rsname",resultSet);
+            //request.getRequestDispatcher("UserList.jsp").forward(request,response);
+            response.sendRedirect("login.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
-        PrintWriter writer= response.getWriter();
+        /*PrintWriter writer= response.getWriter();
         writer.println("<br>username :"+username);
         writer.println("<br>password :"+password);
         writer.println("<br>Email :"+Email);
         writer.println("<br>sex :"+sex);
         writer.println("<br>birthdate :"+birthdate);
-        writer.close();
+        writer.close();*/
     }
 
 }
