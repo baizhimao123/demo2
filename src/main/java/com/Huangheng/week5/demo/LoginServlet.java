@@ -1,5 +1,7 @@
 package com.Huangheng.week5.demo;
 
+import com.Huangheng.dao.UserDao;
+import com.Huangheng.model.User;
 import com.Huangheng.week4.demo.JDBCDemoServlet;
 
 import javax.servlet.*;
@@ -19,7 +21,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
     }
 
     @Override
@@ -28,7 +30,24 @@ public class LoginServlet extends HttpServlet {
         String password=request.getParameter("password");
         PrintWriter writer= response.getWriter();
 
+
+        UserDao userDao=new UserDao();
         try {
+            User user= userDao.findByUsernamePassword(con,username,password);
+
+            if (user!=null){
+
+                request.setAttribute("user",user);
+                request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
+            }else {
+
+                request.setAttribute("message","Username or Password Error!");
+                request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        /*try {
             Statement statement=con.createStatement();
             String sql= "select * from usertable where UserName="+"'"+username+"'"+"and Password="+"'"+password+"'";
             ResultSet resultSet=statement.executeQuery(sql);
@@ -51,12 +70,6 @@ public class LoginServlet extends HttpServlet {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        }*/
     }
 }
