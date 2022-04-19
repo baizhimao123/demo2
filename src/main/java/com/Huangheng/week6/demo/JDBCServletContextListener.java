@@ -25,12 +25,10 @@ public class JDBCServletContextListener implements ServletContextListener {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("wdnmd");
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        System.out.println("sssss");
         sce.getServletContext().removeAttribute("con");
     }
 }
