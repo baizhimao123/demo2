@@ -13,6 +13,9 @@
 %>
 <table>
   <tr>
+    <td>ID:</td><td><%=user_info.getID()%></td>
+  </tr><tr>
+  <tr>
     <td>Username:</td><td><%=user_info.getUserName()%></td>
   </tr><tr>
     <td>Password:</td><td><%=user_info.getPassword()%></td>

@@ -3,6 +3,7 @@ package com.Huangheng.model;
 import java.util.Date;
 
 public class User {
+    private String ID;
     private String UserName;
     private String Password;
     private String Email;
@@ -12,12 +13,21 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String password, String email, String gender, Date birthdate) {
+    public User(String id, String userName, String password, String email, String gender, Date birthdate) {
+        ID = id;
         UserName = userName;
         Password = password;
         Email = email;
         Gender = gender;
         Birthdate = birthdate;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String id) {
+        ID = id;
     }
 
     public String getUserName() {
@@ -63,6 +73,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
+                "ID='" + ID + '\'' +
                 "UserName='" + UserName + '\'' +
                 ", Password='" + Password + '\'' +
                 ", Email='" + Email + '\'' +

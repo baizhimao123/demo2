@@ -25,6 +25,7 @@
 
         while (resultSet.next()){
             out.println("<tr>");
+            out.println("<td>"+resultSet.getString("Id")+"</td>");
             out.println("<td>"+resultSet.getString("UserName")+"</td>");
             out.println("<td>"+resultSet.getString("Password")+"</td>");
             out.println("<td>"+resultSet.getString("Email")+"</td>");

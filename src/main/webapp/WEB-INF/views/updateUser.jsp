@@ -14,8 +14,9 @@
   User user_update= (User) session.getAttribute("user");
 %>
 <form method="post" action="updateUser">
-  <input type="text" name="username" value="<%=user_update.getUserName()%>"><br>
-  password:<input type="password" name="password" value="<%=user_update.getPassword()%>"><br>
+  ID:<input type="text" name="id" value="<%=user_update.getID()%>"><br>
+  Username:<input type="username" name="username" value="<%=user_update.getUserName()%>"><br>
+  Password:<input type="password" name="password" value="<%=user_update.getPassword()%>"><br>
   Email:<input type="text" name="Email" value="<%=user_update.getEmail()%>"><br>
   Gender:
   <input type="radio" name="sex" value="Male" <%="Male".equals(user_update.getGender())?"checked" :""%>>Male

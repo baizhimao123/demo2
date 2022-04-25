@@ -9,7 +9,9 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -29,6 +31,7 @@ public class UpdateUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id=request.getParameter("id");
         String username=request.getParameter("username");
         String password=request.getParameter("password");
         String Email=request.getParameter("Email");
@@ -37,18 +40,18 @@ public class UpdateUserServlet extends HttpServlet {
         //The attempt to convert the type failed
         //
         String dateStr = request.getParameter("birthdate");
-        User users=new User();
-        try {
-            Date birthdate = new  SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+        DateFormat df=new SimpleDateFormat();
 
+        User users=new User();
+        users.setID(id);
+        users.setUserName(username);
+        users.setPassword(password);
+        users.setEmail(Email);
+        users.setGender(sex);
+        try {
+            Date birthdate =df.parse(dateStr);
             System.out.println("dateStr:"+dateStr);
             System.out.println("birthdate:"+birthdate);
-
-
-            users.setUserName(username);
-            users.setPassword(password);
-            users.setEmail(Email);
-            users.setGender(sex);
             users.setBirthdate(birthdate);
         } catch (ParseException e) {
             e.printStackTrace();
