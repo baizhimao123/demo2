@@ -52,10 +52,10 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>-->
-    <servlet>
+    <!--<servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.Huangheng.week5.demo.LoginServlet</servlet-class>
-    </servlet>
+    </servlet>-->
 
     <!-- <servlet>
          <servlet-name>ConfigDemoServlet</servlet-name>
@@ -88,10 +88,10 @@
         <servlet-name>JDBCDemoServlet</servlet-name>
         <url-pattern>/jdbc</url-pattern>
     </servlet-mapping>-->
-    <servlet-mapping>
+    <!--<servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
     
     <welcome-file-list>
         <welcome-file>home</welcome-file>

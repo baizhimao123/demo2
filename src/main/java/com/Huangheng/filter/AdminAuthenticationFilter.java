@@ -35,7 +35,7 @@ public class AdminAuthenticationFilter implements Filter {
 
             Chain.doFilter(request,response);//go to next destination
         }else {
-        	System.out.println(httpRequest.getContextPath());
+        	System.out.println("ssd:"+httpRequest.getContextPath());
             httpResponse.sendRedirect(httpRequest.getContextPath()+"/admin/login");//go to login
         }
     }

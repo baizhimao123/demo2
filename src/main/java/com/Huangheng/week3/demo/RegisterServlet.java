@@ -33,15 +33,15 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        request.getRequestDispatcher("WEB-INF/views/register.jsp").forward(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username=request.getParameter("username");
         String password=request.getParameter("password");
-        String Email=request.getParameter("Email");
-        String sex=request.getParameter("sex");
+        String Email=request.getParameter("email");
+        String sex=request.getParameter("gender");
         String birthdate=request.getParameter("birthdate");
 
         /*
@@ -89,7 +89,7 @@ public class RegisterServlet extends HttpServlet {
            // printWriter.println("</table></body></html>");
             //request.setAttribute("rsname",resultSet);
             //request.getRequestDispatcher("UserList.jsp").forward(request,response);
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("login");
         } catch (SQLException e) {
             e.printStackTrace();
         }
