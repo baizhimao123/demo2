@@ -64,9 +64,10 @@ public class Category {
     }
 
     public static List<Category> findAllCategory(Connection con) throws SQLException {
-        String sql="select * from Category";
+
         List<Category> list=new ArrayList<Category>();
         try {
+            String sql="select * from Category";
             PreparedStatement pt=con.prepareStatement(sql);
             ResultSet rs=pt.executeQuery();
             while (rs.next()){
@@ -77,7 +78,6 @@ public class Category {
                 category.setActive(rs.getBoolean("Active"));
                 list.add(category);
             }
-
         }catch (SQLException e){
             e.printStackTrace();
         }
