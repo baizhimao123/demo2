@@ -3,7 +3,7 @@ package com.Huangheng.model;
 import java.util.Date;
 
 public class User {
-    private String ID;
+    private int ID;
     private String UserName;
     private String Password;
     private String Email;
@@ -13,7 +13,7 @@ public class User {
     public User() {
     }
 
-    public User(String id, String userName, String password, String email, String gender, Date birthdate) {
+    public User(int id, String userName, String password, String email, String gender, Date birthdate) {
         ID = id;
         UserName = userName;
         Password = password;
@@ -22,11 +22,11 @@ public class User {
         Birthdate = birthdate;
     }
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String id) {
+    public void setID(int id) {
         ID = id;
     }
 

@@ -31,7 +31,7 @@ public class UserDao implements IUserDao{
         statement.setString(3,user.getEmail());
         statement.setString(4,user.getGender());
         statement.setDate(5, (java.sql.Date) user.getBirthdate());
-        statement.setString(6,user.getID());
+        statement.setInt(6,user.getID());
         statement.executeUpdate();
         i=1;
         return i;
@@ -52,7 +52,7 @@ public class UserDao implements IUserDao{
 
         if (resultSet.next()==true){
             user=new User();
-            user.setID(resultSet.getString("Id"));
+            user.setID(resultSet.getInt("Id"));
             user.setUserName(resultSet.getString("UserName"));
             user.setPassword(resultSet.getString("Password"));
             user.setEmail(resultSet.getString("Email"));

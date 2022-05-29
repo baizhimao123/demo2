@@ -5,7 +5,7 @@ public class Item {
     private int quantity;
 
     public Item(){
-
+        super();
     }
 
     public Item(Product product, int quantity) {

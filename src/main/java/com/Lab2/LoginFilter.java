@@ -20,17 +20,23 @@ public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         System.out.println("i am in LoginFilter--doFilter()");
+        chain.doFilter(request, response);
         HttpServletRequest req= (HttpServletRequest) request;
+        HttpServletResponse res= (HttpServletResponse) response;
 
-        HttpSession session= req.getSession(false);
-        if(session!=null&&session.getAttribute("message")==null){
-            req.getRequestDispatcher("/lab2/welcome.jsp").forward(request,response);
-
-        }else if (session ==null && session.getAttribute("message")!=null){
-            req.getRequestDispatcher("/lab2/login.jsp").forward(request,response);
+        HttpSession session= req.getSession();
+        boolean isLoggedIn = (session!=null &&session.getAttribute("login")!=null);
+        boolean d= (session.getAttribute("login")!=null);
+        System.out.println("message:"+req.getAttribute("message"));
+       /* if(isLoggedIn &&req.getAttribute("message")==null){
+            System.out.println("aaaaaa");
+            res.sendRedirect("/lab2/welcome.jsp");
         }else {
-            chain.doFilter(request, response);
-        }
+            System.out.println("bbbbb");
+            res.sendRedirect("/lab2/validate.jsp");
+        }*/
+            System.out.println("cccc");
+            chain.doFilter(request,response);
 
         System.out.println("i am in LoginFilter--destroy()");
     }

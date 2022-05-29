@@ -56,7 +56,7 @@
 							</td>
 							<td class="cart_total">
 							
-								<p id="total" class="cart_total_price">${c.quantity*c.product.price}</p>
+								<p id="total" class="cart_total_price">${c.product.price}*${c.quantity}</p>
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href="<%=basePath%>cart?action=remove&productId=${c.product.productId}"><i class="fa fa-times"></i></a>

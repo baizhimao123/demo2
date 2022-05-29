@@ -16,15 +16,14 @@
 <%
     if (login.getUsername().equals("admin") && login.getPassword().equals("admin")){
 %>
-
 <%--<jsp:getProperty name="login" property="username"/>--%>
 <jsp:forward page="welcome.jsp"></jsp:forward>
-<jsp:include page="login.jsp"></jsp:include>
 <%
     }else {
         request.setAttribute("message","Username Password Error");
         request.getRequestDispatcher("lab2/login.jsp").forward(request,response);
     }
 %>
+<jsp:include page="login.jsp"></jsp:include>
 </body>
 </html>

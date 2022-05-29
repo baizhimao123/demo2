@@ -24,6 +24,7 @@ public class UpdateUserServlet extends HttpServlet {
         super.init();
         con= (Connection) getServletContext().getAttribute("con");
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("WEB-INF/views/updateUser.jsp").forward(request,response);
@@ -31,16 +32,19 @@ public class UpdateUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id=request.getParameter("id");
+        int id=Integer.valueOf(request.getParameter("id"));
         String username=request.getParameter("username");
         String password=request.getParameter("password");
         String Email=request.getParameter("Email");
         String sex=request.getParameter("sex");
-
-        //The attempt to convert the type failed
-        //
-        String dateStr = request.getParameter("birthdate");
-        DateFormat df=new SimpleDateFormat();
+        String birthdate=request.getParameter("birthdate");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date= null;
+        try {
+            date = sdf.parse(birthdate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         User users=new User();
         users.setID(id);
@@ -48,14 +52,8 @@ public class UpdateUserServlet extends HttpServlet {
         users.setPassword(password);
         users.setEmail(Email);
         users.setGender(sex);
-        try {
-            Date birthdate =df.parse(dateStr);
-            System.out.println("dateStr:"+dateStr);
-            System.out.println("birthdate:"+birthdate);
-            users.setBirthdate(birthdate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        users.setBirthdate(date);
+
 
         /*String date_t = request.getParameter("birthdate");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
@@ -83,7 +81,7 @@ public class UpdateUserServlet extends HttpServlet {
                     session.setMaxInactiveInterval(10);
 
                     session.setAttribute("user",users);
-                    request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
+                    request.getRequestDispatcher("accountDetails").forward(request,response);
                 }
             }
         } catch (SQLException e) {

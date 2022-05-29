@@ -9,6 +9,7 @@
     </properties>
     <root id="archive" name="demo002-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="demo002:war exploded" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/webapp" />
     </root>
   </artifact>
 </component>
