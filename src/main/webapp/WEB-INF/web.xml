@@ -26,7 +26,7 @@
         <servlet-name>Myname</servlet-name>
         <servlet-class>com.Huangheng.week2.demo.Myname</servlet-class>
     </servlet>
-    
+
     <!--<servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.Huangheng.week3.demo.RegisterServlet</servlet-class>
@@ -105,4 +105,13 @@
         <filter-name>YourNameFilter</filter-name>
         <url-pattern>/lab2</url-pattern>
     </filter-mapping>
+
+    <servlet>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <servlet-class>com.Lab1.LifeCycleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <url-pattern>/life</url-pattern>
+    </servlet-mapping>
 </web-app>
