@@ -21,7 +21,7 @@
 <%
     }else {
         request.setAttribute("message","Username Password Error");
-        request.getRequestDispatcher("lab2/login.jsp").forward(request,response);
+        request.getRequestDispatcher("/lab2/login.jsp").forward(request,response);
     }
 %>
 <jsp:include page="login.jsp"></jsp:include>

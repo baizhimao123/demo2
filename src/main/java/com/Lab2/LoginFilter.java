@@ -25,19 +25,12 @@ public class LoginFilter implements Filter {
         HttpServletResponse res= (HttpServletResponse) response;
 
         HttpSession session= req.getSession();
-        boolean isLoggedIn = (session!=null &&session.getAttribute("login")!=null);
-        boolean d= (session.getAttribute("login")!=null);
-        System.out.println("message:"+req.getAttribute("message"));
-       /* if(isLoggedIn &&req.getAttribute("message")==null){
-            System.out.println("aaaaaa");
-            res.sendRedirect("/lab2/welcome.jsp");
+        if(session!=null &&session.getAttribute("message")==null){
+            res.sendRedirect("/lab3/welcome.jsp");
         }else {
-            System.out.println("bbbbb");
-            res.sendRedirect("/lab2/validate.jsp");
-        }*/
-            System.out.println("cccc");
-            chain.doFilter(request,response);
-
+            res.sendRedirect("/lab3/validate.jsp");
+        }
+        chain.doFilter(request,response);
         System.out.println("i am in LoginFilter--destroy()");
     }
 }
