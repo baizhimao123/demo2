@@ -13,10 +13,13 @@
 </head>
 <body>
 <%-- todo 9: use c:out to print message fron request --%>
-<c:out value="<%=request.getAttribute("message")%>"/>
+<%--<c:if test="${! empty param.message}">
+
+</c:if>--%>
+<c:out value="${param.message}"/>
 <%--todo 1: use c:url to set url in action="validate.jsp" --%>
-<c:url value="validate.jsp" var="validate" scope="session"/>
-<form action="validate">
+<c:url value="validate.jsp" var="url"/>
+<form action="validate.jsp" >
     Username : <input type="text" name="username"><br>
     Password : <input type="password" name="password"><br>
     <input type="submit" value="Login"/>
